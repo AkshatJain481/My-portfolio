@@ -102,10 +102,7 @@ header{
   cursor: pointer;
   
 }
-.Card-cont{
-  margin-left: 64%;
-  margin-top: 10%;
-}
+
 @keyframes slide-in-top {
   0% {
     transform: translateY(-50px);
@@ -118,13 +115,15 @@ header{
   }
 }
 .card {
+  margin-left: 390px;
+  margin-top: 150px;
   width: fit-content;
   height: fit-content;
   
-  display: flex;
+  display: inline-flex;
   align-items: center;
   justify-content: center;
-  
+  animation: slidefromleft 0.5s  ;
   gap: 20px;
 }
 .linkedin{
@@ -191,40 +190,184 @@ header{
 .whatsapp:hover .fa-whatsapp{
   animation: slide-in-top 0.3s both;
 }
+.quote{
+  
+  margin-top:120px; 
+  margin-left: 400px;
+  font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; 
+  font-size: 30px;
+  animation: slidefromleft 0.5s;
+  width: 500px;
+
+}
+.quote-sub{
+  color: white;
+  padding-left: 160px;
+}
+.my-img{
+  
+  margin-top:60px; 
+  margin-left: 16%;
+  height: 405px;
+  animation: slidefromtop 0.5s  ;
+}
+.title-dev{
+  font-family:Arial, Helvetica, sans-serif;
+}
+.list{
+    margin-left: 395px ;
+    margin-top: 5%;
+    animation: slidefromleft 0.5s  ;
+}
+.list-item{
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.3rem;
+    
+    padding: 10px;
+    border-radius: 10px;
+}
+.list-item:hover{
+    background-color: #222327;
+    color: white;
+    
+    cursor: pointer;
+}
+.school-img{
+width: 25%;
+margin-top: 50px;
+margin-left: 155px;
+animation: slidefromtop 0.5s  ;
+}
+.fa-school{
+    margin-right: 20px;
+}
+
+@keyframes slidefromtop {
+  0% {
+    opacity: 0%;
+  transform: translateY(-300px);
+  }
+  50%{
+    opacity: 0%;
+    
+  }
+  100% {
+    opacity: 100%;
+    transform: translateY(0);
+  }
+}
+@keyframes slidefromleft{
+0%{
+  opacity: 0%;
+  transform: translateX(-300px);
+}
+30%{
+  opacity: 0%;
+}
+100%{
+  opacity: 100%;
+  transform: translateX(0);
+}
+}
+.sub-cont{
+  display: inline-flex;
+}
+.active1{
+  background-color: #222327;
+    color: white;
+}
+.about-cont{
+    display: flex;
+}
 </style>
 
 <body>
-<div class="template"><header><span class="name"><b>Akshat Jain</b></span>
+<div id =" main-container"class="template"><header><span class="name"><b>Akshat Jain</b></span>
 <span style="float: right;">
-    <a href="#" class="navbar active" onclick="Navbar(0)">Home</a>
-    <a href="#" class="navbar " onclick="Navbar(1)">My Projects</a>
-    <a href="#" class="navbar" onclick="Navbar(2)">About</a>
+    <a href="#" class="navbar active" id="home-but" onclick="Navbar(0)">Home</a>
+    <a href="#" class="navbar " id="project-but" onclick="Navbar(1)">My Projects</a>
+    <a href="#" class="navbar" id="about-but" onclick="Navbar(2)">About</a>
 </span>
     <br>
-    <span style="font-family:Arial, Helvetica, sans-serif;"> Full stack developer</span>
+    <span class= "title-dev" > Full stack developer</span>
    
 </header>
-<img src="akshatimage1.jpeg" style="float: left; margin-top:60px; margin-left: 16%;" height="405px">
-<article style="text-align: right; margin-top:120px; margin-right: 200px; font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif; font-size: 30px;" >Knowledge leads to<br><span style="color: white; ">Success</span></article>
-<div class= "Card-cont">
+<div class="sub-cont">
+<img class = "my-img" src="akshatimage1.jpeg">
+<div class="sub-sub-cont">
+<article class = "quote" >Knowledge leads to<br><span class="quote-sub" >Success</span></article>
+
 <div class="card">
   <a href=" https://www.instagram.com/akshat_jain_481/ " target="_blank" class="instagram"><i class="fa-brands fa-instagram" ></i></a> 
   <a href=" https://www.linkedin.com/in/akshat-jain-264810276/ " target="_blank" class="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
   <a href=" https://github.com/AkshatJain481 " target="_blank" class="github"><i class="fa-brands fa-github" ></i></a>
   <a href=" https://wa.me/+917015204292 " target="_blank" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
-  
-  </div>             
+ </div>
+ </div>          
   </div>
 </div>
    
 </body>
 <script>
     let navbar_but = document.getElementsByClassName('navbar');
-function Navbar(x){
+    let main = document.getElementsByClassName('template');
+ let home =  document.getElementsByClassName('sub-cont');
+ let about = document.getElementsByClassName('about-cont');
+ let home_butt = document.getElementById('home-but');
+ let project_butt = document.getElementById('project-but');
+
+
+
+ function Navbar(x){
 for(let i = 0;i<navbar_but.length;i++){
 navbar_but[i].classList.remove('active');
 }
 navbar_but[x].classList.add('active');
+if(x==0){
+  if(main[0].contains(about[0])){
+
+main[0].removeChild(about[0]);
+}
+if(x==0 && !main[0].contains(home[0])){
+    const div1 = document.createElement('div');
+  div1.innerHTML = 
+  ` <img class = "my-img" src="akshatimage1.jpeg">
+<div class="sub-sub-cont">
+<article class = "quote" >Knowledge leads to<br><span class="quote-sub" >Success</span></article>
+
+<div class="card">
+  <a href=" https://www.instagram.com/akshat_jain_481/ " target="_blank" class="instagram"><i class="fa-brands fa-instagram" ></i></a> 
+  <a href=" https://www.linkedin.com/in/akshat-jain-264810276/ " target="_blank" class="linkedin"><i class="fa-brands fa-linkedin-in"></i></a>
+  <a href=" https://github.com/AkshatJain481 " target="_blank" class="github"><i class="fa-brands fa-github" ></i></a>
+  <a href=" https://wa.me/+917015204292 " target="_blank" class="whatsapp"><i class="fa-brands fa-whatsapp"></i></a>
+ </div>
+ </div>  `;
+ div1.classList.add('sub-cont');
+main[0].appendChild(div1);
+  }
+}
+
+if(x==1 || x==2){
+  
+  if(main[0].contains(home[0])){
+
+  main[0].removeChild(home[0]);
+  }
+  
+  
+  if(x==2 && !main[0].contains(about[0])){
+  const div = document.createElement('div');
+  div.innerHTML = 
+  `  <img class = "school-img" src="school.jfif">
+
+<ul class="list">
+    <li class="list-item active1" id="school_but"><i class="fa-solid fa-school"></i>My School</li>
+</ul> `;
+div.classList.add('about-cont');
+main[0].appendChild(div);
+ }
+}
+
 }
 
 
